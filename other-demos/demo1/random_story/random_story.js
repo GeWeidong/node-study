@@ -3,6 +3,12 @@ var request = require('request');// request模块是个经过简化的HTTP客户
 var htmlParser = require('htmlparser');// htmlparser模块能把原始的RSS数据转换成JavaScript数据结构
 var configFilename = './rss_feeds.txt';
 
+
+/*
+	串行化流程 演示实例代码
+	串行化流程控制本质上是在需要时让回调进场，而不是简单地把它们嵌套起来。
+ */
+
 function checkForRSSFile () {
 	fs.exists(configFilename, function(exists) {
 		if(!exists) {
@@ -12,11 +18,20 @@ function checkForRSSFile () {
 	})
 }
 
+var tasks = [
+	checkForRSSFile,
+	readRssFile,
+	downLoadRssFeed,
+	parseRssFeed
+]
+
 function next(err, result) {
 	if(err) throw err;
 	var currentTask = tasks.shift();
 	if(currentTask) {currentTask(result);}
 }
+
+next();
 
 function readRssFile (configFilename) {
 	fs.readFile(configFilename, function(err, feedList) {
