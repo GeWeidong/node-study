@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+</head>
+<body>
+	<% include menu %>
+	<h1><%= title %></h1>
+	<p>Fill in the form below to sign in!</p>
+
+	<form action="/login" method="post"> 
+		<p>
+			<input type="text" name="username" placeholder="用户名" />
+		</p>
+		<p>
+			<input type="password" name="userpass" placeholder="密码" />
+		</p>
+		<p>
+			<input type="submit" value="Login" />
+		</p>
+	</form>
+</body>
+</html>

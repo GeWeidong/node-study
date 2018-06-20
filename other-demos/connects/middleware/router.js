@@ -8,6 +8,7 @@ module.exports = function (obj) {
 		}
 		var routes = obj[req.method];
 		var url = parse(req.url);
+
 		var paths = Object.keys(routes);
 
 		for(var i=0;i<paths.length;i++) {

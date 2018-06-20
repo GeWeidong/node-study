@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "connect": "^3.6.6"
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "cookie-parser": "^1.4.3",
+    "limit": "0.0.1"
   }
 }

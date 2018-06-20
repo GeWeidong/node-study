@@ -19,3 +19,4 @@ var routes = {
 
 var app = connect();
 app.use(router(routes)).listen(8000);
+console.log('监听8000端口')
