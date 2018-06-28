@@ -13,6 +13,8 @@ var login = require('./routes/login');
 var user = require('./lib/middleware/user');
 var session = require('express-session');
 
+var messages = require('./lib/messages');
+
 var app = express();
 
 // view engine setup
@@ -31,12 +33,15 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(user);
+app.use(messages);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.get('/register', register.form);
-// app.post('/register', register.submit);
+app.get('/login', login.form);
+app.post('/login', login.submit);
+app.post('/register', register.submit);
 app.get('/logout', login.logout);
 
 // catch 404 and forward to error handler

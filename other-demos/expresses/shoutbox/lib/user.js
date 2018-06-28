@@ -1,6 +1,6 @@
 var redis = require('redis');
 var bcrypt = require('bcryptjs');
-var db = redis.createClient();
+var db = redis.createClient();// 打开redis链接
 
 // 开始创建用户模型
 function User(obj) {
@@ -13,6 +13,7 @@ function User(obj) {
 User.prototype.save = function(fn) {
 	// 用户存在
 	if(this.id) {
+		console.log('exited')
 		this.update(fn)
 	} else {
 		var user = this;
@@ -62,13 +63,17 @@ User.prototype.hashPassword = function(fn) {
 
 User.getByName = function(name, fn) {
 	User.getId(name, function(err, id) {
+		// 查不出来  只好模拟一个
+		id = id || 17;
 		if(err) return fn(err);
 		User.get(id, fn);
 	})
 }
 
 User.getId = function(name, fn) {
-	db.get('user:id:' + name, fn);
+	console.log(name)
+	
+	db.get('user:id:' + name, fn); 
 }
 
 User.get = function(id, fn) {
@@ -93,6 +98,5 @@ User.authenticate = function(name, pass, fn) {
 		})
 	})
 }
-
 
 module.exports = User;

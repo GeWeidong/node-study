@@ -1,7 +1,7 @@
 var User = require('../lib/user');
 // 注册
 exports.submit = function(req, res, next) {
-	var data = req.body.user;
+	var data = req.body;
 	User.authenticate(data.name, data.pass, function(err, user) {
 		if(err) return next(err);
 		if(user) {
@@ -22,5 +22,10 @@ exports.logout = function(req, res) {
 		if(err) throw err;
 		res.redirect('/');
 	})
+}
+
+// 登录
+exports.form = function(req, res, next) {
+	res.render('login', {title: 'Login'});
 }
 
