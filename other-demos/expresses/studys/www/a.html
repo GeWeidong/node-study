@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./ajax.js"></script>
+    <script>
+        window.onload = function() {
+            const oUser = document.querySelector('#user');
+            const oPass = document.querySelector('#pass');
+            const oBtn  = document.querySelector('#submit');
+
+            oBtn.addEventListener('click', function() {
+                ajaxGet('/login', {user: oUser.value, pass: oPass.value}, function(err, str) {
+                    console.log(str);
+                })
+            }, false)
+
+        }
+    </script>
+</head>
+<body>
+    用户名：<input type="text" id="user" /><br />
+    密码：<input type="password" id="pass" /><br />
+    <input type="submit" id="submit" value="提交" />
+</body>
+</html>

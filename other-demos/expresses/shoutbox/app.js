@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var entries = require('./routes/entries');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -12,7 +12,7 @@ var login = require('./routes/login');
 
 var user = require('./lib/middleware/user');
 var session = require('express-session');
-
+var validate = require('./lib/middleware/validate');
 var messages = require('./lib/messages');
 
 var app = express();
@@ -35,7 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(user);
 app.use(messages);
 
-app.use('/', indexRouter);
+// app.use('/', entries.list);
+app.get('/post', entries.list);
+app.post('/post', entries.submit);
 app.use('/users', usersRouter);
 
 app.get('/register', register.form);
@@ -62,7 +64,3 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-
-
-
-// 学习到217页

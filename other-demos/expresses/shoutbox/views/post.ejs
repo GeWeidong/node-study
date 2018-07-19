@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+</head>
+<body>
+    <% include menu %>
+
+    <h1><%= title %></h1>
+    <p>填写此表单，新提交一个信息</p>
+
+    <% include messages %>
+
+    <form method="POST" action="/post">
+        <input type="text" name="title" placeholder="标题" />
+        <textarea name="body" cols="30" rows="10" placeholder="主题"></textarea>
+        <input type="submit" value="post" />
+    </form>
+</body>
+</html>

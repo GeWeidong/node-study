@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./ajax.js"></script>
+    <script>
+        window.onload = function() {
+            var register = document.querySelector('#register');
+            var login = document.querySelector('#login');
+            var textName = document.querySelector('#name');
+            var textPass = document.querySelector('#pass');
+
+            var regObj = {
+                act: 'reg',
+                user: textName,
+                pass: textPass,
+
+            }
+            // 注册
+            register.onclick = function() {
+                ajaxGet('http://localhost:9527', regObj, function(err, res) {
+                    if(err) {
+                        console.log(err)
+                    } else {
+                        if(res.ok) {
+
+                        } else {
+                            alert(res.msg);
+                        }
+                    }
+                })
+            }
+            
+            var loginObj = {
+                act: 'login',
+                user: textName,
+                pass: textPass,
+            }
+            // 登录
+            login.onclick = function() {
+                ajaxGet('http://localhost:9527', loginObj, function(err, res) {
+                    if(err) {
+                        console.log(err)
+                    } else {
+                        if(res.ok) {
+
+                        } else {
+                            alert(res.msg);
+                        }
+                    }
+                })
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    用户：<input type="text" id="name" name="user"><br />
+    密码: <input type="password" id="pass" name="pass"><br />
+    <input type="submit" id="register" value="注册"><br />
+    <input type="submit" id="login" value="登录"><br />
+</body>
+</html>
