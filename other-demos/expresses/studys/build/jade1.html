@@ -1,0 +1,32 @@
+
+<html>   
+  <script>const ejs = require('ejs');
+
+const str = ejs.renderFile('./views/1.ejs', {name: 'gewd'}, function(err, data) {
+    console.log(data);
+})
+
+
+  </script>
+  <link src="1.css" type="stylesheet"/>
+  <script src="a.js"></script>
+  <body>
+    <div class="active"></div>
+    <ul id="oul"></ul><a href="http://baidu.com">官网</a><a href="http://baidu.com">官网</a>
+    <div>
+      <li style="background:red;width:100px"> </li>
+      <li style="background: red;width: 100px"></li>
+      <li class="aaa bbb ccc"></li>
+      <li title="title" name="name"></li>
+    </div>
+    <div>
+      sdfjlsdfjlsdjfsd;jfls
+      sdflksjdlfjsd
+      
+    </div>
+    <script>console.log(98989)</script>
+    <h1>我的名字：jade</h1>
+    <h1 style="width:100px"></h1>
+    <h1 class="active"></h1>
+  </body>
+</html>

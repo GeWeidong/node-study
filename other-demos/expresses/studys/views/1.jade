@@ -1,0 +1,30 @@
+html    
+    script
+        //- 把整个js文件引进来
+        include ../ejs1.js
+    //- 属性放在（）中，以，分割;根据缩进来 规定层级
+    link(src="1.css", type="stylesheet")
+    script(src="a.js")
+    body
+        div.active
+        ul#oul
+        a(href="http://baidu.com") 官网
+        a(href="http://baidu.com") 官网
+        div
+            //- 普通写法
+            li(style={background: 'red', width: '100px'})  
+            //- json写法
+            li(style="background: red;width: 100px")
+            //- 数组写法
+            li(class=['aaa', 'bbb', 'ccc'])
+            //- 属性写法
+            li&attributes({title: 'title', name: 'name'})
+        div.
+            sdfjlsdfjlsdjfsd;jfls
+            sdflksjdlfjsd
+
+        script.
+            console.log(98989)
+        h1 我的名字：#{name}
+        h1(style=json)
+        h1(class=arr)
